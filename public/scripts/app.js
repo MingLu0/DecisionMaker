@@ -30,9 +30,7 @@ var DecisionMakerApp = function (_React$Component) {
         key: "handleDeleteAction",
         value: function handleDeleteAction() {
             this.setState(function () {
-                return {
-                    options: []
-                };
+                return { options: [] };
             });
         }
     }, {
@@ -50,15 +48,13 @@ var DecisionMakerApp = function (_React$Component) {
                 return "item already existed";
             }
             this.setState(function (prevState) {
-                return {
-                    options: prevState.options.concat(option)
-                };
+                return { options: prevState.options.concat(option) };
             });
         }
     }, {
         key: "render",
         value: function render() {
-            var title = "DecisionMaker";
+            var title = "DecisionMakerTest";
             var subtitle = "Hey computer, please make a decision for me!";
 
             return React.createElement(
@@ -148,11 +144,8 @@ var AddOptionds = function (_React$Component2) {
             e.preventDefault();
             var option = e.target.elements.option.value.trim();
             var error = this.props.handleAddOption(option);
-
             this.setState(function () {
-                return {
-                    error: error
-                };
+                return { error: error };
             });
         }
     }, {
@@ -161,6 +154,11 @@ var AddOptionds = function (_React$Component2) {
             return React.createElement(
                 "div",
                 null,
+                this.state.error && React.createElement(
+                    "p",
+                    null,
+                    this.state.error
+                ),
                 React.createElement(
                     "form",
                     { onSubmit: this.handleAddAction },

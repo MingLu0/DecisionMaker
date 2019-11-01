@@ -12,11 +12,7 @@ class DecisionMakerApp extends React.Component{
     }
 
     handleDeleteAction(){
-        this.setState(()=>{
-            return{
-                options:[]
-            };    
-        });
+        this.setState(()=>({options:[]}));
     }
 
     handlePickAction(){
@@ -30,16 +26,11 @@ class DecisionMakerApp extends React.Component{
         } else if(this.state.options.indexOf(option)>-1){
             return "item already existed";
         }
-        this.setState((prevState)=>{
-            return {
-                options:prevState.options.concat(option)
-            }
-            
-        })
+        this.setState((prevState)=>({options:prevState.options.concat(option)}));
     }
 
     render(){
-        const title = "DecisionMaker";
+        const title = "DecisionMakerTest";
         const subtitle = "Hey computer, please make a decision for me!"
 
         return(
@@ -101,18 +92,14 @@ class AddOptionds extends React.Component{
     handleAddAction(e){
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
-        const error = this.props.handleAddOption(option);
-        
-        this.setState(()=>{
-            return {
-                error
-            }
-        })
+        const error = this.props.handleAddOption(option);    
+        this.setState(()=>({error}));    
     }
 
     render(){
         return(
             <div>
+                {this.state.error&&<p>{this.state.error}</p>}
                 <form onSubmit={this.handleAddAction}>
                     <input type="text" name="option"></input>
                     <button >Add option</button>

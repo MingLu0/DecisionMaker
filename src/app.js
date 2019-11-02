@@ -30,7 +30,7 @@ class DecisionMakerApp extends React.Component{
     }
 
     render(){
-        const title = "DecisionMakerTest";
+        const title = "DecisionMaker";
         const subtitle = "Hey computer, please make a decision for me!"
 
         return(

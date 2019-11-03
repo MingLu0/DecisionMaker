@@ -6,33 +6,25 @@ import Action from './Action';
 
 export default class DecisionMakerApp extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.handleDeleteAction = this.handleDeleteAction.bind(this);
-        this.handlePickAction = this.handlePickAction.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.state={
-            options:[1,2] 
-        
-        }
+    state = {
+        options:[1,2,3]
     }
 
-    handleDeleteAction(){
-        this.setState(()=>({options:[]}));
+    handleDeleteAction = ()=>{
+        setState(()=>{options:[]});
     }
 
-    handlePickAction(){
+    handlePickAction = ()=>{
         alert(this.state.options[Math.floor(Math.random()*this.state.options.length)]);
     }
 
-    handleAddOption(option){
-
+    handleAddOption = ()=>{
         if(!option){
             return "no item has been entered";
-        } else if(this.state.options.indexOf(option)>-1){
+        } else if(state.options.indexOf(option)>-1){
             return "item already existed";
         }
-        this.setState((prevState)=>({options:prevState.options.concat(option)}));
+        setState((prevState)=>({options:prevState.options.concat(option)}));
     }
 
     render(){

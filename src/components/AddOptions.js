@@ -10,11 +10,15 @@ class AddOptionds extends React.Component{
         }
     }
 
-    handleAddAction(e){
+    state = {
+        error:undefined
+    }
+
+    handleAddAction = (e) =>{
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
-        const error = this.props.handleAddOption(option);    
-        this.setState(()=>({error}));    
+        const error = props.handleAddOption(option);    
+        setState(()=>({error})); 
     }
 
     render(){

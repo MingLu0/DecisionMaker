@@ -3,28 +3,35 @@ import Header from './Header';
 import AddOptions from './AddOptions';
 import Options from './Options';
 import Action from './Action';
+import OptionModal from './OptionModal';
 
 export default class DecisionMakerApp extends React.Component{
 
     state = {
-        options:[1,2,3]
+        options:[1,2,3],
+        isItemSelected:undefined
     }
 
     handleDeleteAction = ()=>{
-        setState(()=>{options:[]});
+        this.setState(()=>({options:[]}));
     }
 
     handlePickAction = ()=>{
-        alert(this.state.options[Math.floor(Math.random()*this.state.options.length)]);
+        this.setState(()=>({isItemSelected:(this.state.options[Math.floor(Math.random()*this.state.options.length)])}));
+        //alert((this.state.options[Math.floor(Math.random()*this.state.options.length)]));
     }
 
-    handleAddOption = ()=>{
+    handleOkButtonAction = ()=>{
+        this.setState(()=>({isItemSelected:undefined}));
+    }
+
+    handleAddOption = (option)=>{
         if(!option){
             return "no item has been entered";
-        } else if(state.options.indexOf(option)>-1){
+        } else if(this.state.options.indexOf(option)>-1){
             return "item already existed";
         }
-        setState((prevState)=>({options:prevState.options.concat(option)}));
+        this.setState((prevState)=>({options:prevState.options.concat(option)}));
     }
 
     render(){
@@ -37,6 +44,7 @@ export default class DecisionMakerApp extends React.Component{
             <Action buttonEnabled = {this.state.options.length>0} handlePickAction={this.handlePickAction}/>
             <Options options={this.state.options} handleDeleteAction={this.handleDeleteAction}/>
             <AddOptions handleAddOption = {this.handleAddOption}/>
+            <OptionModal selectedItem = {this.state.isItemSelected} handleOkButtonAction ={this.handleOkButtonAction}/>
             </div>
         );
     }

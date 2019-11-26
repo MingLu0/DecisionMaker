@@ -41,10 +41,26 @@ export default class DecisionMakerApp extends React.Component{
         return(
             <div>
             <Header title={title} subtitle={subtitle}/>
-            <Action buttonEnabled = {this.state.options.length>0} handlePickAction={this.handlePickAction}/>
-            <Options options={this.state.options} handleDeleteAction={this.handleDeleteAction}/>
-            <AddOptions handleAddOption = {this.handleAddOption}/>
-            <OptionModal selectedItem = {this.state.isItemSelected} handleOkButtonAction ={this.handleOkButtonAction}/>
+            <div className='container'>
+                <Action 
+                buttonEnabled = {this.state.options.length>0} 
+                handlePickAction={this.handlePickAction}
+                />
+                <div className='widget'>
+                    <Options 
+                    options={this.state.options} 
+                    handleDeleteAction={this.handleDeleteAction}
+                    />
+                    <AddOptions 
+                    handleAddOption = {this.handleAddOption}
+                />
+
+                </div>
+                
+            </div>
+            <OptionModal 
+            selectedItem = {this.state.isItemSelected} 
+            handleOkButtonAction ={this.handleOkButtonAction}/>
             </div>
         );
     }
